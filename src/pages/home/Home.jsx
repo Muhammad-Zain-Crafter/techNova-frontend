@@ -33,17 +33,19 @@ function Home() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             {/* LEFT CONTENT */}
             <div>
-              <div className="inline-block mb-5 px-4 py-1 rounded-full border border-cyan-400/40 bg-cyan-500/10">
-                <span className="text-xs tracking-[3px] text-cyan-300 uppercase">
-                  New Evolution 2.0
-                </span>
+              <div className="flex justify-center md:justify-start mb-5">
+                <div className="flex flex-wrap items-center px-4 py-1 rounded-full border border-cyan-400/40 bg-cyan-500/10">
+                  <span className="text-xs tracking-[3px] text-cyan-300 uppercase">
+                    New Evolution 2.0
+                  </span>
+                </div>
               </div>
               <h1 className="text-4xl md:text-5xl text-center md:text-left font-black leading-tight mb-6">
                 Precision <span className="text-cyan-400">Hardware</span>
                 <br />
                 Engineered.
               </h1>
-              <p className="text-gray-400 text-lg leading-relaxed max-w-xl mb-10">
+              <p className="text-gray-400 text-lg leading-relaxed max-w-xl mb-10 text-center md:text-left">
                 Shop the latest tech products with performance, innovation, and
                 reliability designed for everyday creators and gamers.
               </p>
@@ -52,12 +54,12 @@ function Home() {
               <div className="flex flex-wrap items-center gap-5">
                 <Link
                   to="/products"
-                  className="px-7 py-4 rounded-xl bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition duration-300"
+                  className="w-full md:w-auto px-7 py-4 rounded-xl text-center bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition duration-300"
                 >
                   Explore Specs
                 </Link>
 
-                <button className="px-7 py-4 rounded-xl border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
+                <button className="w-full md:w-auto px-7 py-4 rounded-xl border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
                   Watch Reveal
                 </button>
               </div>
@@ -150,8 +152,8 @@ function Home() {
               Loading Products...
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
-              {products.slice(0, 6).map((product) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {products.slice(0, 8).map((product) => (
                 <div className="w-full max-w-[320px]">
                   <ProductCard key={product.id} product={product} />
                 </div>

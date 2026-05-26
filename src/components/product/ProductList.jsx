@@ -1,5 +1,3 @@
-// components/ProductList.jsx
-
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
 import ProductCard from "./ProductCard";
@@ -17,25 +15,16 @@ const ProductList = () => {
   }, []);
 
   const fetchProducts = async () => {
-
     try {
-
       const response = await API.get(
         "/api/v1/productStore/products/products"
       );
-
       setProducts(response.data.data || []);
-
     } catch (error) {
-
       console.log(error);
-
     } finally {
-
       setLoading(false);
-
     }
-
   };
 
   if (loading) {
