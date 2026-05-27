@@ -9,6 +9,8 @@ import Register from './pages/auth/Register'
 import Products from './pages/product/Products'
 import Cart from './pages/cart/Cart'
 import ProductDetails from './components/product/ProductDetails'
+import Dashboard from './pages/admin/Dashboard'
+
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
     element: <div>
       <Navbar/>
       <Cart/>
+      <Footer/>
+    </div>
+  },
+  {
+    path: "/admin/dashboard",
+    element: <div>
+      <Navbar/>
+      <Dashboard/>
       <Footer/>
     </div>
   }
