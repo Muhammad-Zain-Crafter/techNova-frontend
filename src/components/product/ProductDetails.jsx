@@ -32,7 +32,7 @@ const ProductDetails = () => {
         }
       );
 
-      setProduct(response.data.data); // ✅ IMPORTANT FIX
+      setProduct(response.data.data);
     } catch (error) {
       console.log("Product detail error:", error);
     } finally {
@@ -90,10 +90,19 @@ return (
           </p>
 
           <div className="text-3xl font-bold text-cyan-400 mb-6">
-            ${product.price}
+            Rs. {product.price}
           </div>
 
-          <button className="px-6 py-3 bg-cyan-400 text-black font-bold rounded-lg hover:bg-cyan-300 transition">
+          <button onclick={async () => {
+            try {
+              await API.post("/api/v1/productStore/cart/add", {
+                product_id: product.id,
+                quantity: 1,
+              });
+            } catch (error) {
+              console.error("Error adding to cart:", error);
+            }
+          }} className="px-6 py-3 bg-cyan-400 text-black font-bold rounded-lg hover:bg-cyan-300 transition">
             Add To Cart ⚡
           </button>
         </div>

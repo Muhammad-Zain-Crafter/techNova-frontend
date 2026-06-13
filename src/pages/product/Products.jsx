@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import API from "../../api/axios";
 import ProductCard from "../../components/product/ProductCard";
 import { FiSearch } from "react-icons/fi";
+import Loader from "../../components/common/Loader";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -52,9 +53,7 @@ const Products = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#030712] min-h-screen flex items-center justify-center text-cyan-400">
-        Loading...
-      </div>
+      <Loader />
     );
   }
 
@@ -62,7 +61,7 @@ const Products = () => {
     <main className="bg-[#030712] min-h-screen text-white py-20">
 
       {/* Search Bar */}
-      <div className="max-w-6xl mx-auto px-6 mb-6">
+      <div className="max-w-6xl mx-auto px-6 mb-2">
         <div className="relative">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
 

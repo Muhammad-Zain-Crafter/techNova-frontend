@@ -10,7 +10,8 @@ import Products from './pages/product/Products'
 import Cart from './pages/cart/Cart'
 import ProductDetails from './components/product/ProductDetails'
 import Dashboard from './pages/admin/Dashboard'
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -68,14 +69,22 @@ const router = createBrowserRouter([
 ])
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <div>
       <RouterProvider router={router}>
 
       </RouterProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="dark"
+      />
     </div>
-
   )
 }
 

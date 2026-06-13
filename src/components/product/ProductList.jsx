@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
 import ProductCard from "./ProductCard";
+import Loader from "../common/Loader";
 
 const ProductList = () => {
 
@@ -30,9 +31,7 @@ const ProductList = () => {
   if (loading) {
 
     return (
-      <div className="text-center text-cyan-400 text-xl">
-        Loading Products...
-      </div>
+      <Loader />
     );
 
   }

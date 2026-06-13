@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import API from "../../api/axios";
 import ProductCard from "../../components/product/ProductCard";
 import heroImg from "../../assets/hero-img.png";
+import Loader from "../../components/common/Loader";
 function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,12 +57,15 @@ function Home() {
                   to="/products"
                   className="w-full md:w-auto px-7 py-4 rounded-xl text-center bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition duration-300"
                 >
-                  Explore Specs
+                  Explore Products
                 </Link>
 
-                <button className="w-full md:w-auto px-7 py-4 rounded-xl border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
-                  Watch Reveal
-                </button>
+                <Link
+                  to="/support"
+                  className="w-full md:w-auto px-7 py-4 rounded-xl border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
+                >
+                  Get Support
+                </Link>
               </div>
             </div>
 
@@ -81,7 +85,7 @@ function Home() {
       </section>
 
       {/* FEATURE SECTION */}
-      <section className="py-20 border-t border-[#12192d]">
+      <section className="py-14 border-t border-[#12192d]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature Card */}
@@ -148,9 +152,7 @@ function Home() {
 
           {/* Products Grid */}
           {loading ? (
-            <div className="text-center text-cyan-400 text-lg">
-              Loading Products...
-            </div>
+            <Loader />
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.slice(0, 8).map((product) => (

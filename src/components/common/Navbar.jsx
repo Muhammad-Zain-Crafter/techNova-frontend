@@ -83,7 +83,7 @@ function Navbar() {
                 }`
               }
             >
-              Specs
+              Profile
             </NavLink>
             <NavLink
               to="/support"
