@@ -9,7 +9,6 @@ const ProductCard = ({ product }) => {
 
  const handleAddToCart = async (e) => {
   e.preventDefault();
-
   if (!token) {
     navigate("/login");
     return;
