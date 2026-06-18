@@ -46,16 +46,15 @@ const Cart = () => {
     <div className="bg-[#030712] min-h-screen text-white">
       <div className="max-w-6xl mx-auto px-6 py-10 grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-3 flex justify-end">
-          <button onClick={clearCart} className="bg-red-500 px-4 py-2 rounded">
+          <button onClick={clearCart} className="bg-red-500 md:px-4 md:py-2 px-3 py-1 rounded">
             Clear Cart
           </button>
         </div>
         {/* ITEMS */}
-        {/* ITEMS */}
         <div className="lg:col-span-2 space-y-4">
           {cartItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-              <p className="text-xl font-semibold">Your cart is empty 🛒</p>
+              <p className="text-xl font-semibold">Your cart is empty</p>
               <p className="text-sm mt-2">
                 Add some products to continue shopping
               </p>

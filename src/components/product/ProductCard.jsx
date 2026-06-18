@@ -72,7 +72,6 @@ const ProductCard = ({ product }) => {
           >
             Details
           </Link>
-
           <button
             onClick={handleAddToCart}
             className="flex-1 py-2 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition duration-300 text-sm"

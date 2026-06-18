@@ -1,50 +1,38 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import {
-  FiShoppingCart,
-  FiUser,
-  FiLogOut,
-  FiMenu,
-  FiX,
-} from "react-icons/fi";
+import { FiShoppingCart, FiUser, FiLogOut, FiMenu, FiX } from "react-icons/fi";
 
 function Navbar() {
-
   const navigate = useNavigate();
 
   // Mobile Menu State
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Check token
-  const token = localStorage.getItem("token");
-
-  // Logout Function
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-    setMenuOpen(false);
-  };
-
   // Close Menu
   const closeMenu = () => {
     setMenuOpen(false);
   };
+  const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
 
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+
+  navigate("/login");
+  setMenuOpen(false);
+
+  window.location.reload();
+};
   return (
-
     <header className="bg-[#050816] border-b border-[#1a1f35] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link
-            to="/"
-            className="text-3xl font-bold tracking-wide"
-          >
+          <Link to="/" className="text-3xl font-bold tracking-wide">
             <span className="text-white">Tech</span>
 
-            <span className="text-cyan-400">
-              Nova
-            </span>
+            <span className="text-cyan-400">Nova</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -61,6 +49,7 @@ function Navbar() {
             >
               Home
             </NavLink>
+
             <NavLink
               to="/products"
               className={({ isActive }) =>
@@ -73,6 +62,7 @@ function Navbar() {
             >
               Products
             </NavLink>
+
             <NavLink
               to="/specs"
               className={({ isActive }) =>
@@ -85,6 +75,7 @@ function Navbar() {
             >
               Profile
             </NavLink>
+
             <NavLink
               to="/support"
               className={({ isActive }) =>
@@ -97,6 +88,21 @@ function Navbar() {
             >
               Support
             </NavLink>
+
+            {user?.role === "admin" && (
+              <NavLink
+                to="/admin/dashboard"
+                className={({ isActive }) =>
+                  `text-sm transition duration-300 ${
+                    isActive
+                      ? "text-cyan-400 border-b border-cyan-400 pb-1"
+                      : "text-gray-300 hover:text-cyan-400"
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
+            )}
           </nav>
           {/* Right Side */}
           <div className="flex items-center gap-5">
@@ -149,6 +155,7 @@ function Navbar() {
           >
             Home
           </NavLink>
+
           <NavLink
             to="/products"
             onClick={closeMenu}
@@ -156,13 +163,15 @@ function Navbar() {
           >
             Products
           </NavLink>
+
           <NavLink
             to="/specs"
             onClick={closeMenu}
             className="text-gray-300 hover:text-cyan-400 transition"
           >
-            Specs
+            Profile
           </NavLink>
+
           <NavLink
             to="/support"
             onClick={closeMenu}
@@ -170,7 +179,17 @@ function Navbar() {
           >
             Support
           </NavLink>
-          {/* Mobile Login / Logout */}
+
+          {user?.role === "admin" && (
+            <NavLink
+              to="/admin/dashboard"
+              onClick={closeMenu}
+              className="text-gray-300 hover:text-cyan-400 transition"
+            >
+              Dashboard
+            </NavLink>
+          )}
+
           {token ? (
             <button
               onClick={handleLogout}
@@ -179,7 +198,6 @@ function Navbar() {
               <FiLogOut />
               Logout
             </button>
-
           ) : (
             <Link
               to="/login"

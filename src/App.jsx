@@ -12,6 +12,7 @@ import ProductDetails from './components/product/ProductDetails'
 import Dashboard from './pages/admin/Dashboard'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CreateProduct from './pages/product/CreateProduct'
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ const router = createBrowserRouter([
     element: <div>
       <Navbar/>
       <Dashboard/>
+      <Footer/>
+    </div>
+  },
+  {
+    path: "/admin/create-product",
+    element: <div>
+      <Navbar/>
+      <CreateProduct/>
       <Footer/>
     </div>
   }

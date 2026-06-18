@@ -62,7 +62,7 @@ function Home() {
 
                 <Link
                   to="/support"
-                  className="w-full md:w-auto px-7 py-4 rounded-xl border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
+                  className="w-full md:w-auto px-7 py-4 rounded-xl border text-center border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
                 >
                   Get Support
                 </Link>
@@ -75,7 +75,6 @@ function Home() {
 
               <img
                 src={heroImg}
-                s
                 alt="Gaming Keyboard"
                 className="relative z-10 w-full rounded-3xl border border-[#1a2238] shadow-2xl"
               />
@@ -156,8 +155,9 @@ function Home() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.slice(0, 8).map((product) => (
-                <div className="w-full max-w-[320px]">
-                  <ProductCard key={product.id} product={product} />
+                <div key={product._id || product.id}
+                className="w-full max-w-[320px]">
+                  <ProductCard product={product} />
                 </div>
               ))}
             </div>
