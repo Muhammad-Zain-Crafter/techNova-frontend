@@ -1,11 +1,14 @@
-// src/pages/Home.jsx
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../../api/axios";
 import ProductCard from "../../components/product/ProductCard";
 import heroImg from "../../assets/hero-img.png";
 import Loader from "../../components/common/Loader";
+import {
+  FaTruck,
+  FaShieldAlt,
+  FaStar,
+} from "react-icons/fa";
 function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -89,37 +92,37 @@ function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature Card */}
             <div className="bg-[#081120] border border-[#182235] rounded-3xl p-8 hover:border-cyan-400 transition duration-300">
-              <div className="text-cyan-400 text-4xl mb-5">⚡</div>
+              <FaTruck className="text-cyan-400 text-5xl mb-5" />
 
-              <h3 className="text-2xl font-bold mb-3">Quantum Latency</h3>
+              <h3 className="text-2xl font-bold mb-3">Fast Delivery</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                Measured at sub-millisecond response times across our entire
-                ecosystem.
+                Enjoy quick and reliable delivery with secure packaging and
+                real-time order tracking for every purchase.
               </p>
             </div>
 
             {/* Feature Card */}
             <div className="bg-[#081120] border border-[#182235] rounded-3xl p-8 hover:border-cyan-400 transition duration-300">
-              <div className="text-cyan-400 text-4xl mb-5">🛡️</div>
+              <FaShieldAlt className="text-cyan-400 text-5xl mb-5" />
 
-              <h3 className="text-2xl font-bold mb-3">Encrypted Core</h3>
+              <h3 className="text-2xl font-bold mb-3">Secure Shopping</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                Military-grade hardware encryption for advanced device
-                protection.
+                Shop with confidence through secure authentication and protected
+                customer data for a safe online shopping experience.
               </p>
             </div>
 
             {/* Feature Card */}
             <div className="bg-[#081120] border border-[#182235] rounded-3xl p-8 hover:border-cyan-400 transition duration-300">
-              <div className="text-cyan-400 text-4xl mb-5">♾️</div>
+              <FaStar className="text-cyan-400 text-5xl mb-5" />
 
-              <h3 className="text-2xl font-bold mb-3">Lifetime Warranty</h3>
+              <h3 className="text-2xl font-bold mb-3">Verified Reviews</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                Premium support and hardware reliability built for long-term
-                performance.
+                Read authentic ratings and reviews from verified customers
+                before making your purchase decision.
               </p>
             </div>
           </div>
@@ -155,8 +158,10 @@ function Home() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.slice(0, 8).map((product) => (
-                <div key={product._id || product.id}
-                className="w-full max-w-[320px]">
+                <div
+                  key={product._id || product.id}
+                  className="w-full max-w-[320px]"
+                >
                   <ProductCard product={product} />
                 </div>
               ))}

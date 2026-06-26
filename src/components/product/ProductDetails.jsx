@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import API from "../../api/axios";
 import { toast } from "react-toastify";
 import Loader from "../common/Loader";
-
+import { FaArrowLeft } from "react-icons/fa";
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ const ProductDetails = () => {
       navigate("/login");
       return;
     }
-
     fetchProduct();
   }, [id]);
 
@@ -89,7 +88,8 @@ const ProductDetails = () => {
           onClick={() => navigate("/products")}
           className="mb-2 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition"
         >
-          ← Back to Products
+          <FaArrowLeft className="text-sm" />
+          <span>Back to Products</span>
         </button>
 
         <div className="grid md:grid-cols-2 gap-4 mt-6">
