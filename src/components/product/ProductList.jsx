@@ -4,15 +4,10 @@ import ProductCard from "./ProductCard";
 import Loader from "../common/Loader";
 
 const ProductList = () => {
-
   const [products, setProducts] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-
     fetchProducts();
-
   }, []);
 
   const fetchProducts = async () => {
@@ -27,7 +22,6 @@ const ProductList = () => {
       setLoading(false);
     }
   };
-
   if (loading) {
     return (
       <Loader />
@@ -35,9 +29,7 @@ const ProductList = () => {
   }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
       {products.map((product) => (
-
         <ProductCard
           key={product.id}
           product={product}

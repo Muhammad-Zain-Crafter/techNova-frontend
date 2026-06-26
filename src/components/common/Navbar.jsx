@@ -10,17 +10,18 @@ function Navbar() {
     setMenuOpen(false);
   };
   const token = localStorage.getItem("token");
-const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
+  const isAdmin = user?.role === "admin";
 
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
-  navigate("/login");
-  setMenuOpen(false);
+    navigate("/login");
+    setMenuOpen(false);
 
-  window.location.reload();
-};
+    window.location.reload();
+  };
   return (
     <header className="bg-[#050816] border-b border-[#1a1f35] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -34,31 +35,48 @@ const handleLogout = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-sm transition duration-300 ${
-                  isActive
-                    ? "text-cyan-400 border-b border-cyan-400 pb-1"
-                    : "text-gray-300 hover:text-cyan-400"
-                }`
-              }
-            >
-              Home
-            </NavLink>
+            {!isAdmin && (
+              <>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `text-sm transition duration-300 ${
+                      isActive
+                        ? "text-cyan-400 border-b border-cyan-400 pb-1"
+                        : "text-gray-300 hover:text-cyan-400"
+                    }`
+                  }
+                >
+                  Home
+                </NavLink>
 
-            <NavLink
-              to="/products"
-              className={({ isActive }) =>
-                `text-sm transition duration-300 ${
-                  isActive
-                    ? "text-cyan-400 border-b border-cyan-400 pb-1"
-                    : "text-gray-300 hover:text-cyan-400"
-                }`
-              }
-            >
-              Products
-            </NavLink>
+                <NavLink
+                  to="/products"
+                  className={({ isActive }) =>
+                    `text-sm transition duration-300 ${
+                      isActive
+                        ? "text-cyan-400 border-b border-cyan-400 pb-1"
+                        : "text-gray-300 hover:text-cyan-400"
+                    }`
+                  }
+                >
+                  Products
+                </NavLink>
+
+                <NavLink
+                  to="/support"
+                  className={({ isActive }) =>
+                    `text-sm transition duration-300 ${
+                      isActive
+                        ? "text-cyan-400 border-b border-cyan-400 pb-1"
+                        : "text-gray-300 hover:text-cyan-400"
+                    }`
+                  }
+                >
+                  Support
+                </NavLink>
+              </>
+            )}
 
             <NavLink
               to="/profile"
@@ -73,20 +91,7 @@ const handleLogout = () => {
               Profile
             </NavLink>
 
-            <NavLink
-              to="/support"
-              className={({ isActive }) =>
-                `text-sm transition duration-300 ${
-                  isActive
-                    ? "text-cyan-400 border-b border-cyan-400 pb-1"
-                    : "text-gray-300 hover:text-cyan-400"
-                }`
-              }
-            >
-              Support
-            </NavLink>
-
-            {user?.role === "admin" && (
+            {isAdmin && (
               <NavLink
                 to="/admin/dashboard"
                 className={({ isActive }) =>

@@ -34,20 +34,16 @@ const Products = () => {
       setLoading(false);
     }
   };
-
-  // Extract unique categories (you can also store category in DB)
+  // Extract unique categories
   const categories = ["All", ...new Set(products.map(p => p.category || "General"))];
-
   // Filter logic (search + category)
   const filteredProducts = products.filter((product) => {
     const matchSearch = product.name
       .toLowerCase()
       .includes(search.toLowerCase());
-
     const matchCategory =
       selectedCategory === "All" ||
       (product.category || "General") === selectedCategory;
-
     return matchSearch && matchCategory;
   });
 
@@ -56,15 +52,12 @@ const Products = () => {
       <Loader />
     );
   }
-
   return (
-    <main className="bg-[#030712] min-h-screen text-white py-20">
-
+    <main className="bg-[#030712] min-h-screen text-white py-16">
       {/* Search Bar */}
-      <div className="max-w-6xl mx-auto px-6 mb-2">
+      <div className="max-w-6xl mx-auto px-6 mb-4">
         <div className="relative">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
-
           <input
             type="text"
             placeholder="Search products..."
@@ -74,7 +67,6 @@ const Products = () => {
           />
         </div>
       </div>
-
       {/* Categories */}
       <div className="max-w-6xl mx-auto px-6 mb-10 flex flex-wrap gap-3">
         {categories.map((cat) => (
@@ -91,7 +83,6 @@ const Products = () => {
           </button>
         ))}
       </div>
-
       {/* Products Grid */}
       <div className="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-3 gap-10">
         {filteredProducts.length > 0 ? (
@@ -104,7 +95,6 @@ const Products = () => {
           </p>
         )}
       </div>
-
     </main>
   );
 };

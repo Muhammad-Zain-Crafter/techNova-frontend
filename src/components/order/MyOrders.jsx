@@ -49,50 +49,38 @@ const MyOrders = () => {
 
   return (
     <main className="min-h-screen bg-[#030712] text-white">
-
       <div className="absolute top-24 left-20 w-72 h-72 bg-cyan-500/20 blur-[120px] rounded-full"></div>
       <div className="absolute top-32 right-20 w-72 h-72 bg-purple-500/20 blur-[120px] rounded-full"></div>
-
       <div className="relative max-w-7xl mx-auto px-6 py-16">
-
         <div className="mb-12">
           <h1 className="text-4xl font-black">
             My <span className="text-cyan-400">Orders</span>
           </h1>
-
           <p className="text-gray-400 mt-2">
             Track all your purchases.
           </p>
         </div>
-
         {orders.length === 0 ? (
           <div className="bg-[#081120] border border-[#182235] rounded-3xl p-16 text-center">
             <h2 className="text-3xl font-bold mb-3">
               No Orders Found
             </h2>
-
             <p className="text-gray-400">
               Place your first order to see it here.
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-
             {orders.map((order) => (
               <div
                 key={order.id}
                 className="bg-[#081120] border border-[#182235] rounded-3xl p-8"
               >
-
-                {/* Header */}
-
                 <div className="flex flex-wrap justify-between gap-4 mb-8">
-
                   <div>
                     <h2 className="text-2xl font-bold">
                       Order #{order.id}
                     </h2>
-
                     <p className="text-gray-400 mt-2">
                       Total:{" "}
                       <span className="text-cyan-400 font-bold">
@@ -100,7 +88,6 @@ const MyOrders = () => {
                       </span>
                     </p>
                   </div>
-
                   <span
                     className={`px-5 py-2 rounded-full border capitalize font-semibold ${statusColor(
                       order.status
@@ -108,37 +95,20 @@ const MyOrders = () => {
                   >
                     {order.status}
                   </span>
-
                 </div>
-
-                {/* Shipping */}
-
                 <div className="mb-8">
-
                   <h3 className="text-xl font-bold mb-4">
                     Shipping Address
                   </h3>
-
                   <div className="text-gray-300 space-y-1">
-
                     <p>{order.full_name}</p>
-
                     <p>{order.phone}</p>
-
                     <p>{order.address_line}</p>
-
-                    <p>
-                      {order.city}, {order.state}
-                    </p>
-
+                    <p>{order.city}, {order.state}</p>
                     <p>{order.postal_code}</p>
-
                   </div>
 
                 </div>
-
-                {/* Products */}
-
                 <h3 className="text-xl font-bold mb-5">
                   Ordered Items
                 </h3>

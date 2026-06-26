@@ -5,7 +5,6 @@ import API from "../../api/axios";
 
 const CreateProduct = () => {
   const [loading, setLoading] = useState(false);
-
   const [product, setProduct] = useState({
     name: "",
     price: "",
@@ -13,27 +12,21 @@ const CreateProduct = () => {
     description: "",
     category: "",
   });
-
   const handleChange = (e) => {
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
-
       const response = await API.post(
         "/api/v1/productStore/products/create-product",
         product
       );
-
       toast.success(response.data.message);
-
       setProduct({
         name: "",
         price: "",
@@ -49,7 +42,6 @@ const CreateProduct = () => {
       setLoading(false);
     }
   };
-
   return (
     <main className="bg-[#030712] min-h-screen text-white">
       {/* Glow */}
@@ -62,22 +54,18 @@ const CreateProduct = () => {
           <h1 className="text-4xl font-black mb-3">
             Create <span className="text-cyan-400">Product</span>
           </h1>
-
           <p className="text-gray-400">
             Add new hardware products to your futuristic store.
           </p>
         </div>
-
         <div className="grid lg:grid-cols-2 gap-10">
           {/* FORM */}
           <div className="bg-[#081120] border border-[#182235] rounded-3xl p-8">
             <form className="space-y-6" onSubmit={handleSubmit}>
-              {/* Name */}
               <div>
                 <label className="block mb-2 text-gray-300">
                   Product Name
                 </label>
-
                 <input
                   type="text"
                   name="name"
@@ -88,11 +76,8 @@ const CreateProduct = () => {
                   required
                 />
               </div>
-
-              {/* Price */}
               <div>
                 <label className="block mb-2 text-gray-300">Price</label>
-
                 <input
                   type="number"
                   name="price"
@@ -103,13 +88,10 @@ const CreateProduct = () => {
                   required
                 />
               </div>
-
-              {/* Image */}
               <div>
                 <label className="block mb-2 text-gray-300">
                   Image URL
                 </label>
-
                 <input
                   type="text"
                   name="image"
@@ -120,13 +102,10 @@ const CreateProduct = () => {
                   required
                 />
               </div>
-
-              {/* Category */}
               <div>
                 <label className="block mb-2 text-gray-300">
                   Category
                 </label>
-
                 <select
                   name="category"
                   value={product.category}
@@ -140,15 +119,14 @@ const CreateProduct = () => {
                   <option value="Keyboard">Keyboard</option>
                   <option value="Monitor">Monitor</option>
                   <option value="Smart Watch">Smart Watch</option>
+                  <option value="RAM">RAM</option>
+                  <option value="SSD">SSD</option>
                 </select>
               </div>
-
-              {/* Description */}
               <div>
                 <label className="block mb-2 text-gray-300">
                   Description
                 </label>
-
                 <textarea
                   rows={5}
                   name="description"
@@ -159,8 +137,6 @@ const CreateProduct = () => {
                   required
                 ></textarea>
               </div>
-
-              {/* Button */}
               <button
                 disabled={loading}
                 className="w-full py-4 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition duration-300"

@@ -8,7 +8,7 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import API from "../../api/axios";
-
+import socket from "../../socket";
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -19,13 +19,25 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchStats();
+
+    socket.on("new_order", () => {
+      fetchStats();
+    });
+
+    socket.on("user_registered", () => {
+      fetchStats();
+    });
+
+    return () => {
+      socket.off("new_order");
+      socket.off("product_created");
+      socket.off("user_registered");
+    };
   }, []);
 
   const fetchStats = async () => {
     try {
-      const res = await API.get(
-        "/api/v1/productStore/users/getDashboardStats"
-      );
+      const res = await API.get("/api/v1/productStore/users/getDashboardStats");
 
       setStats(res.data);
     } catch (error) {
@@ -90,8 +102,7 @@ const Dashboard = () => {
           </div>
 
           <h1 className="text-4xl font-black mb-3">
-            Welcome Back{" "}
-            <span className="text-cyan-400">Administrator</span>
+            Welcome Back <span className="text-cyan-400">Administrator</span>
           </h1>
 
           <p className="text-gray-400">
@@ -112,9 +123,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-black mb-2">
-                {item.value}
-              </h2>
+              <h2 className="text-3xl font-black mb-2">{item.value}</h2>
 
               <p className="text-gray-400">{item.title}</p>
             </div>
@@ -138,9 +147,7 @@ const Dashboard = () => {
                   {action.icon}
                 </div>
 
-                <h3 className="text-xl font-bold mb-2">
-                  {action.title}
-                </h3>
+                <h3 className="text-xl font-bold mb-2">{action.title}</h3>
 
                 <p className="text-gray-400 text-sm">
                   Manage your store efficiently.

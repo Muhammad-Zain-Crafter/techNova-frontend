@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import API from "../../api/axios";
 import Loader from "../../components/common/Loader";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const GetProfile = () => {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState({});
   const [form, setForm] = useState({
     name: "",
@@ -137,6 +139,15 @@ const GetProfile = () => {
               >
                 {saving ? "Updating..." : "Save Changes"}
               </button>
+              {profile.role !== "admin" && (
+                <button
+                  type="button"
+                  onClick={() => navigate("/orders")}
+                  className="ml-4 bg-[#182235] text-cyan-400 px-8 py-3 rounded-xl font-semibold hover:bg-[#24314d] transition"
+                >
+                  My Orders
+                </button>
+              )}
             </form>
           </div>
         </div>

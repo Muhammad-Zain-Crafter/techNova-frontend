@@ -29,31 +29,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
-
       setError("");
-
       const response = await API.post(
         "/api/v1/productStore/users/login",
         formData,
       );
-
-      // Save token
       localStorage.setItem("token", response.data.token);
-
-      // Save user data
       localStorage.setItem("user", JSON.stringify(response.data.data));
-
-      // Redirect Admin
       if (response.data.data.role === "admin") {
         navigate("/admin/dashboard");
-      } else {
+      // home page
+      } else { 
         navigate("/");
       }
-
-      window.location.reload();
     } catch (error) {
       setError(
         error.response?.data?.message ||
