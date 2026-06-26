@@ -82,19 +82,19 @@ const ProductDetails = () => {
   };
 
   return (
-    <main className="bg-[#030712] min-h-screen text-white py-12">
+    <main className="bg-[#030712] min-h-screen text-white py-10">
       <div className="max-w-6xl mx-auto px-6">
         {/* Back Button */}
         <button
           onClick={() => navigate("/products")}
-          className="mb-8 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition"
+          className="mb-2 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition"
         >
           ← Back to Products
         </button>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
           {/* Image */}
-          <div className="rounded-2xl overflow-hidden border border-[#182235] h-[350px] w-[370px] mx-auto">
+          <div className="rounded-2xl overflow-hidden border border-[#182235] h-[350px] md:w-[370px] w-full mx-auto">
             <img
               src={product.image}
               alt={product.name}

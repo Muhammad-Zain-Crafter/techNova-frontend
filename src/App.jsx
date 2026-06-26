@@ -13,6 +13,12 @@ import Dashboard from './pages/admin/Dashboard'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreateProduct from './pages/product/CreateProduct'
+import Support from './pages/support/Support'
+import GetProfile from './pages/profile/GetProfile'
+import GetOrders from './components/order/GetOrders'
+import Address from './pages/address.jsx/Address'
+import PlaceOrder from './components/order/PlaceOrder'
+import MyOrders from './components/order/MyOrders'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +42,14 @@ const router = createBrowserRouter([
     </div>
   },
   {
+    path: "/profile",
+    element: <div>
+      <Navbar/>
+      <GetProfile/>
+      <Footer/>
+    </div>
+  },
+  {
     path: "/products",
     element: <div>
       <Navbar/>
@@ -52,11 +66,40 @@ const router = createBrowserRouter([
     </div>
   },
   {
+    path: "/support",
+    element: <div>
+      <Navbar/>,
+      <Support/>,
+      <Footer/>
+    </div>
+  },
+  {
     path: "/cart",
     element: <div>
       <Navbar/>
       <Cart/>
       <Footer/>
+    </div>
+  },
+  {
+    path: "/address",
+    element: <div>
+      <Navbar/>
+      <Address/>
+    </div>
+  },
+  {
+    path: "place-order",
+    element: <div>
+      <Navbar/>
+      <PlaceOrder/>
+    </div>
+  },
+  {
+    path: "orders",
+    element: <div>
+      <Navbar/>
+      <MyOrders/>
     </div>
   },
   {
@@ -74,6 +117,15 @@ const router = createBrowserRouter([
       <CreateProduct/>
       <Footer/>
     </div>
+  },
+  {
+    path: "/admin/orders",
+    element: <div>
+      <Navbar/>
+      <GetOrders/>
+    </div>
+  },
+  {
   }
 ])
 function App() {

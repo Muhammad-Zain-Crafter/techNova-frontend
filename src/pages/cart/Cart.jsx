@@ -14,7 +14,24 @@ const Cart = () => {
   useEffect(() => {
     fetchCart();
   }, []);
+  const checkout = async () => {
+    try {
+      const response = await API.post(
+        "/api/v1/productStore/orders/create-order",
+      );
 
+      toast.success(response.data.message || "Order placed successfully");
+
+      // Empty the cart UI
+      setCartItems([]);
+
+      await API.delete("/api/v1/productStore/cart/clear");
+
+      navigate("/orders"); // your OrderTable page
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to place order");
+    }
+  };
   const clearCart = async () => {
     try {
       await API.delete("/api/v1/productStore/cart/clear");
@@ -46,7 +63,10 @@ const Cart = () => {
     <div className="bg-[#030712] min-h-screen text-white">
       <div className="max-w-6xl mx-auto px-6 py-10 grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-3 flex justify-end">
-          <button onClick={clearCart} className="bg-red-500 md:px-4 md:py-2 px-3 py-1 rounded">
+          <button
+            onClick={clearCart}
+            className="bg-red-500 md:px-4 md:py-2 px-3 py-1 rounded"
+          >
             Clear Cart
           </button>
         </div>
@@ -72,7 +92,7 @@ const Cart = () => {
         </div>
 
         {/* SUMMARY */}
-        <CartSummary items={cartItems} />
+        <CartSummary items={cartItems} onCheckout={checkout} />
       </div>
     </div>
   );

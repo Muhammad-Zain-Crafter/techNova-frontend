@@ -5,10 +5,7 @@ import { FiShoppingCart, FiUser, FiLogOut, FiMenu, FiX } from "react-icons/fi";
 function Navbar() {
   const navigate = useNavigate();
 
-  // Mobile Menu State
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Close Menu
   const closeMenu = () => {
     setMenuOpen(false);
   };
@@ -64,7 +61,7 @@ const handleLogout = () => {
             </NavLink>
 
             <NavLink
-              to="/specs"
+              to="/profile"
               className={({ isActive }) =>
                 `text-sm transition duration-300 ${
                   isActive
@@ -165,7 +162,7 @@ const handleLogout = () => {
           </NavLink>
 
           <NavLink
-            to="/specs"
+            to="/profile"
             onClick={closeMenu}
             className="text-gray-300 hover:text-cyan-400 transition"
           >
