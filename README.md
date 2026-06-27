@@ -1,6 +1,6 @@
-# 🚀 TechNova – Full Stack E-Commerce Store
+🚀 TechNova – Full Stack Tech Store
 
-TechNova is a modern full-stack e-commerce web application built to provide a seamless online shopping experience while demonstrating real-world full-stack development practices. The project includes secure authentication, product management, order management, user reviews, and an admin dashboard with role-based access.
+TechNova is a full-stack tech store web application where users can explore and purchase the latest technology products. The application provides a secure shopping experience with user authentication, product reviews, order management, and an admin dashboard for managing the entire store.
 
 ---
 
