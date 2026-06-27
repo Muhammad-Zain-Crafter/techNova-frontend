@@ -20,18 +20,15 @@ const Dashboard = () => {
   useEffect(() => {
     fetchStats();
 
-    socket.on("new_order", () => {
-      fetchStats();
-    });
+    const handleNewOrder = () => fetchStats();
+    const handleUserRegistered = () => fetchStats();
 
-    socket.on("user_registered", () => {
-      fetchStats();
-    });
+    socket.on("new_order", handleNewOrder);
+    socket.on("user_registered", handleUserRegistered);
 
     return () => {
-      socket.off("new_order");
-      socket.off("product_created");
-      socket.off("user_registered");
+      socket.off("new_order", handleNewOrder);
+      socket.off("user_registered", handleUserRegistered);
     };
   }, []);
 

@@ -14,12 +14,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Support from './pages/support/Support'
 import GetProfile from './pages/profile/GetProfile'
-import Address from './pages/address.jsx/Address'
+import Address from './pages/address/Address'
 import PlaceOrder from './components/order/PlaceOrder'
 import MyOrders from './components/order/MyOrders'
 import GetOrders from './pages/admin/GetOrders'
 import Users from './pages/admin/Users'
 import CreateProduct from './pages/admin/CreateProduct'
+import Product from './pages/admin/Product'
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,13 @@ const router = createBrowserRouter([
     element: <div>
       <Navbar/>
       <CreateProduct/>
+    </div>
+  },
+  {
+    path: "/admin/products",
+    element: <div>
+      <Navbar/>
+      <Product/>
     </div>
   },
   {

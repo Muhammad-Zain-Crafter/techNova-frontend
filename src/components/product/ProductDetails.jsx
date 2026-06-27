@@ -4,6 +4,9 @@ import API from "../../api/axios";
 import { toast } from "react-toastify";
 import Loader from "../common/Loader";
 import { FaArrowLeft } from "react-icons/fa";
+import Review from "../../pages/review/Review";
+
+
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -121,6 +124,7 @@ const ProductDetails = () => {
               Add To Cart
             </button>
           </div>
+          <Review productId={product.id} />
         </div>
       </div>
     </main>
