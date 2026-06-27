@@ -146,25 +146,37 @@ function Navbar() {
       {/* Mobile Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-[500px]" : "max-h-0"
+          menuOpen ? "max-h-[600px]" : "max-h-0"
         }`}
       >
         <div className="bg-[#0b1020] border-t border-[#1a1f35] px-6 py-5 flex flex-col gap-5">
-          <NavLink
-            to="/"
-            onClick={closeMenu}
-            className="text-gray-300 hover:text-cyan-400 transition"
-          >
-            Home
-          </NavLink>
+          {!isAdmin && (
+            <>
+              <NavLink
+                to="/"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Home
+              </NavLink>
 
-          <NavLink
-            to="/products"
-            onClick={closeMenu}
-            className="text-gray-300 hover:text-cyan-400 transition"
-          >
-            Products
-          </NavLink>
+              <NavLink
+                to="/products"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Products
+              </NavLink>
+
+              <NavLink
+                to="/support"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Support
+              </NavLink>
+            </>
+          )}
 
           <NavLink
             to="/profile"
@@ -174,28 +186,54 @@ function Navbar() {
             Profile
           </NavLink>
 
-          <NavLink
-            to="/support"
-            onClick={closeMenu}
-            className="text-gray-300 hover:text-cyan-400 transition"
-          >
-            Support
-          </NavLink>
+          {isAdmin && (
+            <>
+              <NavLink
+                to="/admin/dashboard"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Dashboard
+              </NavLink>
 
-          {user?.role === "admin" && (
-            <NavLink
-              to="/admin/dashboard"
-              onClick={closeMenu}
-              className="text-gray-300 hover:text-cyan-400 transition"
-            >
-              Dashboard
-            </NavLink>
+              <NavLink
+                to="/admin/create-product"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Create Product
+              </NavLink>
+
+              <NavLink
+                to="/admin/products"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Manage Products
+              </NavLink>
+
+              <NavLink
+                to="/admin/orders"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Manage Orders
+              </NavLink>
+
+              <NavLink
+                to="/admin/users"
+                onClick={closeMenu}
+                className="text-gray-300 hover:text-cyan-400 transition"
+              >
+                Users
+              </NavLink>
+            </>
           )}
 
           {token ? (
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 text-red-400"
+              className="flex items-center gap-2 text-red-400 hover:text-red-300 transition"
             >
               <FiLogOut />
               Logout
@@ -204,7 +242,7 @@ function Navbar() {
             <Link
               to="/login"
               onClick={closeMenu}
-              className="flex items-center gap-2 text-cyan-400"
+              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition"
             >
               <FiUser />
               Login
