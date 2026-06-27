@@ -107,14 +107,18 @@ function Navbar() {
             )}
           </nav>
           {/* Right Side */}
+          {/* Right Side */}
           <div className="flex items-center gap-5">
-            {/* Cart */}
-            <Link
-              to="/cart"
-              className="text-white hover:text-cyan-400 transition text-2xl"
-            >
-              <FiShoppingCart />
-            </Link>
+            {/* Cart - Only for normal users */}
+            {!isAdmin && (
+              <Link
+                to="/cart"
+                className="text-white hover:text-cyan-400 transition text-2xl"
+              >
+                <FiShoppingCart />
+              </Link>
+            )}
+
             {/* Desktop Login / Logout */}
             <div className="hidden md:flex">
               {token ? (
@@ -133,6 +137,7 @@ function Navbar() {
                 </Link>
               )}
             </div>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
