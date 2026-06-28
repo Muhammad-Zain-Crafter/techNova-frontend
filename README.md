@@ -1,16 +1,171 @@
-# React + Vite
+🚀 TechNova – Full Stack Tech Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TechNova is a full-stack tech store web application where users can explore and purchase the latest technology products. The application provides a secure shopping experience with user authentication, product reviews, order management, and an admin dashboard for managing the entire store.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### 👤 User Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Secure user authentication using JWT
+* Browse, search, and filter products
+* View detailed product information
+* Add products to the shopping cart
+* Place orders
+* View order history
+* Manage user profile
+* Submit and view product reviews
+* Responsive design for desktop and mobile devices
 
-## Expanding the ESLint configuration
+### 🛠️ Admin Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Secure admin dashboard
+* Manage products
+* Manage users
+* Manage customer orders
+* Update order status
+* Role-based access control
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Tailwind CSS
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* PostgreSQL
+
+### Authentication & Security
+
+* JWT Authentication
+* Password Hashing (bcrypt)
+* Rate Limiting
+* Protected API Routes
+
+### Real-Time Communication
+
+* WebSockets (Socket.IO)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* Node.js
+* PostgreSQL
+* npm
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/TechNova.git
+cd TechNova
+```
+
+---
+
+## 📦 Install Dependencies
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+```
+
+### Backend
+
+```bash
+cd backend
+npm install
+```
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file inside the backend folder.
+
+```env
+PORT=5000
+
+DATABASE_URL=your_database_connection_string
+
+JWT_SECRET=your_secret_key
+
+JWT_EXPIRES_IN=7d
+
+CLIENT_URL=http://localhost:5173
+```
+
+---
+
+## ▶️ Run the Application
+
+### Start Backend
+
+```bash
+cd backend
+npm run dev
+```
+
+### Start Frontend
+
+```bash
+cd frontend
+npm run dev
+```
+
+---
+
+## 🔮 Future Improvements
+
+* Wishlist
+* Payment Gateway Integration
+* Email Notifications
+* Product Recommendations
+* Inventory Management
+* Sales Analytics Dashboard
+* Multi-language Support
+
+---
+
+## 📚 What I Learned
+
+Through TechNova, I gained practical experience with:
+
+* Building a complete full-stack application
+* REST API development
+* JWT Authentication & Authorization
+* PostgreSQL database design
+* Role-based access control
+* Real-time communication using WebSockets
+* API security using Rate Limiting
+* Responsive UI development
+* CRUD operations
+* State management and routing in React
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Muhammad Zain**
+
+If you found this project helpful or interesting, consider giving it a ⭐ on GitHub!
